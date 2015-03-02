@@ -58,16 +58,12 @@ public class SegmentView extends LinearLayout {
               
             @Override  
             public void onClick(View v) {  
-            	System.out.println("textView1 click 1");  
                 if (textView1.isSelected()) {  
-                	System.out.println("textView1 click 2"); 
                     return;  
                 }  
-                System.out.println("textView1 click 3"); 
                 textView1.setSelected(true);  
                 textView2.setSelected(false);  
                 if (mOnSegmentViewClickListener != null) {  
-                	System.out.println("textView1 click 4"); 
                 	mOnSegmentViewClickListener.onSegmentViewClick(textView1, 0);  
                 }  
             }  
@@ -119,7 +115,29 @@ public class SegmentView extends LinearLayout {
         if (position == 1) {  
             textView2.setText(text);  
         }  
-    }  
+    }
+    
+    /**
+     * 设置左边的按钮选中
+     */
+    public void setLeftSelected(){
+    	textView1.setSelected(true);  
+        textView2.setSelected(false); 
+        if (mOnSegmentViewClickListener != null) {  
+        	mOnSegmentViewClickListener.onSegmentViewClick(textView1, 0);  
+        }
+    }
+    
+    /**
+     * 设置右边的按钮选中
+     */
+    public void setRightSelected(){
+    	textView1.setSelected(false);  
+        textView2.setSelected(true); 
+        if (mOnSegmentViewClickListener != null) {  
+        	mOnSegmentViewClickListener.onSegmentViewClick(textView2, 1);  
+        }
+    }
       
     public interface OnSegmentViewClickListener{  
         /** 
